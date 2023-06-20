@@ -24,6 +24,7 @@ export default function Posts() {
 
   return (
     <>
+      <h1 className="a-center">  Posts </h1>
       <table class="table">
         <thead>
           <tr>

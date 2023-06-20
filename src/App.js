@@ -4,7 +4,6 @@ import Contact from './components/Contact';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import NoMatch from './components/NoMatch';
-import PostLists from './components/PostLists';
 import Post from './components/Post';
 
 import { BrowserRouter as Router, Route, Link, useRoutes } from 'react-router-dom';
@@ -12,7 +11,11 @@ import { BrowserRouter as Router, Route, Link, useRoutes } from 'react-router-do
 function Routes() {
   const element = useRoutes([
     { path: "/", element: <Home /> },
-    
+    {
+      path: "/posts",
+      element: <Posts />      
+    },
+    { path: "/posts/:id", element: <Post /> },
     { path: "/contact", element: <Contact /> },
     { path: "*", element: <NoMatch /> }
   ]);
@@ -22,13 +25,11 @@ function Routes() {
 function App() {
   return (
     <>
-
       <Router>
-
         <Navbar />
-
-
-        <Routes />
+        <div className='container'>
+          <Routes />
+        </div>
 
       </Router>
     </>

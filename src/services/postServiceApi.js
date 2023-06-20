@@ -5,9 +5,12 @@ export const postServerApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com' }),
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: (page = 1) => `api/v1/posts?_page=${page}&_limit=10`,
+      query: (page = 1) => '/posts',
+    }),
+    getSinglePost: builder.query({
+      query: (id) => `/posts/${id}`,
     }),
   }),
 });
 
-export const { useGetPostsQuery } = postServerApi;
+export const { useGetPostsQuery, useGetSinglePostQuery } = postServerApi;

@@ -1,5 +1,7 @@
 import { useGetPostsQuery } from "../services/postServiceApi";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import Loader from './Loader';
 
 export default function Posts() {
 
@@ -14,7 +16,7 @@ export default function Posts() {
   } = useGetPostsQuery(page);
 
   if (isLoading || isFetching) {
-    return <div>loading...</div>;
+    return <div><Loader /></div>;
   }
 
   if (isError) {
@@ -22,10 +24,11 @@ export default function Posts() {
     return <div>{error.status}</div>;
   }
 
+  
   return (
     <>
       <h1 className="a-center">  Posts </h1>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -38,7 +41,9 @@ export default function Posts() {
           {posts?.map((post) => (
             <tr key={post.id}>
               <th scope="row">{post.id}</th>
-              <td>{post.title}</td>
+              <td>              
+                <Link to={`/posts/${post.id}`}> {post.title} </Link>
+              </td>
 
             </tr>
           ))}

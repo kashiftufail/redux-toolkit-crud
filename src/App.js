@@ -1,22 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
-import Todos from './features/todo/Todos';
-import AddTodos from './features/todo/AddTodos';
 import Posts from './components/Posts';
+import Contact from './components/Contact';
 import Navbar from './components/Navbar';
+import Home from './components/Home';
+import NoMatch from './components/NoMatch';
+import PostLists from './components/PostLists';
+import Post from './components/Post';
 
+import { BrowserRouter as Router, Route, Link, useRoutes } from 'react-router-dom';
+
+function Routes() {
+  const element = useRoutes([
+    { path: "/", element: <Home /> },
+    
+    { path: "/contact", element: <Contact /> },
+    { path: "*", element: <NoMatch /> }
+  ]);
+  return element;
+}
 
 function App() {
   return (
     <>
-      <Navbar />
-      <div className="container">        
 
-        <h1 className='a-center'>posts List</h1>
+      <Router>
 
-        <Posts />       
+        <Navbar />
 
-      </div>
+
+        <Routes />
+
+      </Router>
     </>
   );
 }

@@ -17,9 +17,9 @@ export default function NewPost() {
 
   return (
     <form onSubmit={(e) => submitPost(e)}>
-      <h3>New Album</h3>
+      <h3>New Post</h3>
       <div>
-        {/* <label htmlFor='title'>Title:</label>{' '} */}
+        
         <input
                     type="text"
                     id="title"

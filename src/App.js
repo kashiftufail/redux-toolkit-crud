@@ -5,6 +5,9 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import NoMatch from './components/NoMatch';
 import Post from './components/Post';
+import UpdatePost from './components/UpdatePost';
+
+
 
 import { BrowserRouter as Router, Route, Link, useRoutes } from 'react-router-dom';
 
@@ -16,6 +19,7 @@ function Routes() {
       element: <Posts />      
     },
     { path: "/posts/:id", element: <Post /> },
+    { path: "/posts/:id/update", element: <UpdatePost /> },
     { path: "/contact", element: <Contact /> },
     { path: "*", element: <NoMatch /> }
   ]);

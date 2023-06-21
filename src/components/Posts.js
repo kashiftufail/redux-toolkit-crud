@@ -33,6 +33,7 @@ export default function Posts() {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
+            <th scope="col">Action</th>
 
           </tr>
         </thead>
@@ -43,7 +44,9 @@ export default function Posts() {
               <th scope="row">{post.id}</th>
               <td>              
                 <Link to={`/posts/${post.id}`}> {post.title} </Link>
+                
               </td>
+              <td><Link to={`/posts/${post.id}/update`}> update Post </Link></td>
 
             </tr>
           ))}

@@ -3,9 +3,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from './Loader';
 
+import { useDeletePostMutation } from "../services/postServiceApi";
+
 export default function Posts() {
 
   const [page, setPage] = useState(1);
+
+  const [deletePost] = useDeletePostMutation()
 
   const {
     data: posts = [],
@@ -46,7 +50,9 @@ export default function Posts() {
                 <Link to={`/posts/${post.id}`}> {post.title} </Link>
                 
               </td>
-              <td><Link to={`/posts/${post.id}/update`}> update Post </Link></td>
+              <td><Link to={`/posts/${post.id}/update`}> update Post </Link> | 
+                  <Link to={'Javascript:;'} onClick={() => deletePost({id: post.id}) } > delete Post </Link>
+              </td>
 
             </tr>
           ))}
@@ -71,4 +77,18 @@ export default function Posts() {
     </>
   );
 }
+
+// import React from 'react'
+// import { Outlet } from 'react-router-dom'
+
+// const Posts = () => {
+//   return (
+//     <div style={{ padding: 20 }}>
+//       <h2>Blog</h2>
+//       <Outlet />
+//     </div>
+//   )
+// }
+
+// export default Posts
 

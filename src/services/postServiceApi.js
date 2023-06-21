@@ -36,7 +36,7 @@ export const postServerApi = createApi({
     }),
     deletePost: builder.mutation({
       query: ({ id }) => ({
-        url: `/posts/${id}`,
+        url: `api/v1/posts/${id}`,
         method: 'DELETE',
         body: id
       }),
